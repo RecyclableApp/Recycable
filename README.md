@@ -1,2 +1,2 @@
-# Recycable
+# Recyclable
 Reduce, Reuse, Recycle
