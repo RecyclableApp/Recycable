@@ -2,11 +2,18 @@ var db = require("./../models");
 
 module.exports = function(app) {
     
+// READ
+app.get("/", function(req, res){
+    
+        res.render("index");
+    
+});
+
     // READ
-    app.get("/", function(req, res){
+    app.get("/addStudent", function(req, res){
         db.Student.findAll({}).then(function(data){
             // res.json(data);
-            res.render("index", {students: data});
+            res.render("addStudent", {students: data});
         });
     });
 
