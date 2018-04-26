@@ -31,7 +31,7 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./controllers/studentController")(app);
+require("./controllers/userController")(app);
 
 // Starts the server to begin listening
 // =============================================================
