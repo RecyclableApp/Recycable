@@ -17,6 +17,7 @@ module.exports = function(app) {
                 id: req.params.id
             }
         }).then(function(data){
+            console.log(data.name);
             res.render("student", {student: data});
         });
     });
@@ -25,7 +26,12 @@ module.exports = function(app) {
     app.post("/api/students", function(req, res){
         db.Student.create({
             name: req.body.name,
-            GPA: req.body.GPA
+            phone: req.body.phone,
+            address: req.body.address,
+            type: req.body.type,
+            quantity_in_lbs: req.body.quantity_in_lbs,
+            pickupStart: req.body.pickupStart,
+            pickupEnd: req.body.pickupEnd
         }).then(function(data){
             res.json(data);
         });
@@ -35,7 +41,12 @@ module.exports = function(app) {
     app.put("/api/student/:id", function(req, res){
         db.Student.update({
             name: req.body.name,
-            GPA: req.body.GPA
+            phone: req.body.phone,
+            address: req.body.address,
+            type: req.body.type,
+            quantity_in_lbs: req.body.quantity_in_lbs,
+            pickupStart: req.body.pickupStart,
+            pickupEnd: req.body.pickupEnd
         }, {
             where: {
                 id: req.params.id
