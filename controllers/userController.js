@@ -2,11 +2,25 @@ var db = require("./../models");
 
 module.exports = function(app) {
     
+// READ
+app.get("/", function(req, res){
+    
+        res.render("index");
+    
+});
+
     // READ
+<<<<<<< HEAD:controllers/studentController.js
+    app.get("/addStudent", function(req, res){
+        db.Student.findAll({}).then(function(data){
+            // res.json(data);
+            res.render("addStudent", {students: data});
+=======
     app.get("/addUser", function(req, res){
         db.User.findAll({}).then(function(data){
             // res.json(data);
             res.render("addUser", {users: data});
+>>>>>>> a5d3043cdbb1e5ffd0b1aaceabd66ad10471cb6e:controllers/userController.js
         });
     });
 
