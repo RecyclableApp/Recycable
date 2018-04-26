@@ -10,28 +10,35 @@ app.get("/", function(req, res){
 });
 
     // READ
+<<<<<<< HEAD:controllers/studentController.js
     app.get("/addStudent", function(req, res){
         db.Student.findAll({}).then(function(data){
             // res.json(data);
             res.render("addStudent", {students: data});
+=======
+    app.get("/addUser", function(req, res){
+        db.User.findAll({}).then(function(data){
+            // res.json(data);
+            res.render("addUser", {users: data});
+>>>>>>> a5d3043cdbb1e5ffd0b1aaceabd66ad10471cb6e:controllers/userController.js
         });
     });
 
     // READ
-    app.get("/student/:id", function(req, res){
-        db.Student.findOne({
+    app.get("/user/:id", function(req, res){
+        db.User.findOne({
             where: {
                 id: req.params.id
             }
         }).then(function(data){
             console.log(data.name);
-            res.render("student", {student: data});
+            res.render("user", {user: data});
         });
     });
     
     // CREATE 
-    app.post("/api/students", function(req, res){
-        db.Student.create({
+    app.post("/api/users", function(req, res){
+        db.User.create({
             name: req.body.name,
             phone: req.body.phone,
             address: req.body.address,
@@ -45,8 +52,8 @@ app.get("/", function(req, res){
     });
     
     // UPDATE
-    app.put("/api/student/:id", function(req, res){
-        db.Student.update({
+    app.put("/api/user/:id", function(req, res){
+        db.User.update({
             name: req.body.name,
             phone: req.body.phone,
             address: req.body.address,
@@ -64,8 +71,8 @@ app.get("/", function(req, res){
     });
 
     // DELETE
-    app.delete("/api/student/:id", function(req, res){
-        db.Student.destroy({
+    app.delete("/api/user/:id", function(req, res){
+        db.User.destroy({
             where: {
                 id: req.params.id
             }
