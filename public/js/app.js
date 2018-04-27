@@ -54,5 +54,6 @@ $(document).ready(function () {
             window.location.assign("/addUser");
         });
     });
+    
 
 });
