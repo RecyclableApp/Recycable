@@ -4,9 +4,7 @@ module.exports = function(app) {
     
 // READ
 app.get("/", function(req, res){
-    
         res.render("index");
-    
 });
 
     // READ

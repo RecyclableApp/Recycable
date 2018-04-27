@@ -16,7 +16,7 @@
         <div class="form-group">
             <label for="type">Type:</label>
             {{!-- This is the old code --}}
-            <input type="text" class="form-control" id="type">
+            {{!-- <input type="text" class="form-control" id="type"> --}}
 
             {{!-- This is the dropdown I tried --}}
             {{!-- <select type="text" class="form-control" id="type">
@@ -27,14 +27,16 @@
             </select> --}}
 
             {{!-- Now trying radio buttons --}}
-            {{!-- <br>
-            <form>
-                <input type="radio" name="type" value="aluminum"  id="type"> Aluminum <br>
-                <input type="radio" name="type" value="glass"  id="type"> Glass <br>
-                <input type="radio" name="type" value="paper"  id="type"> Paper <br>
-                <input type="radio" name="type" value="cardboard"  id="type"> Cardboard <br>
-            </form> --}}
-
+            {{!-- IT WORKED!  WOOOHOOO!  THANKS TRAVIS! --}}
+            <br>
+                <input type="radio" name="type" value="aluminum"  class="type"> Aluminum 
+                <br>
+                <input type="radio" name="type" value="glass"  class="type"> Glass 
+                <br>
+                <input type="radio" name="type" value="paper"  class="type"> Paper 
+                <br>
+                <input type="radio" name="type" value="cardboard"  class="type"> Cardboard 
+                <br>
         </div>
         <div class="form-group">
             <label for="quantity_in_lbs">Quantity (in lbs):</label>
