@@ -40,14 +40,7 @@ $(document).ready(function () {
             type: $("#type-update").val().trim(),
             quantity_in_lbs: $("#quantity_in_lbs-update").val().trim(),
             pickupStart: $("#pickupStart-update").val().trim(),
-            pickupEnd: $("#pickupEnd-update").val().trim(),
-            // name: $("#name-update").val(),
-            // phone: $("#phone-update").val(),
-            // address: $("#address-update").val(),
-            // type: $("#type-update").val(),
-            // quantity_in_lbs: $("#quantity_in_lbs-update").val(),
-            // pickupStart: $("#pickupStart-update").val(),
-            // pickupEnd: $("#pickupEnd-update").val(),
+            pickupEnd: $("#pickupEnd-update").val().trim()
         };
         console.log(userData);
         // send a PUT request to the server
