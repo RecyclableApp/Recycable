@@ -6,7 +6,8 @@ $(document).ready(function () {
             name: $("#name").val().trim(),
             phone: $("#phone").val().trim(),
             address: $("#address").val().trim(),
-            type: $("#type").val().trim(),
+            // type: $("#type").val(),
+            type: $('input[name=type]:checked').val(),
             quantity_in_lbs: $("#quantity_in_lbs").val().trim(),
             pickupStart: $("#pickupStart").val().trim(),
             pickupEnd: $("#pickupEnd").val().trim(),
@@ -37,17 +38,11 @@ $(document).ready(function () {
             name: $("#name-update").val().trim(),
             phone: $("#phone-update").val().trim(),
             address: $("#address-update").val().trim(),
-            type: $("#type-update").val().trim(),
+            // type: $("#type-update").val(),
+            type: $('input[name=type]:checked').val(),
             quantity_in_lbs: $("#quantity_in_lbs-update").val().trim(),
             pickupStart: $("#pickupStart-update").val().trim(),
-            pickupEnd: $("#pickupEnd-update").val().trim(),
-            // name: $("#name-update").val(),
-            // phone: $("#phone-update").val(),
-            // address: $("#address-update").val(),
-            // type: $("#type-update").val(),
-            // quantity_in_lbs: $("#quantity_in_lbs-update").val(),
-            // pickupStart: $("#pickupStart-update").val(),
-            // pickupEnd: $("#pickupEnd-update").val(),
+            pickupEnd: $("#pickupEnd-update").val().trim()
         };
         console.log(userData);
         // send a PUT request to the server
