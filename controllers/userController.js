@@ -26,6 +26,18 @@ module.exports = function (app) {
         res.render("login");
     });
 
+    // READ: This renders a profile page (THIS IS NEW, I JUST ADDED IT!)
+    app.get("/profile/:id", function (req, res) {
+        db.newUser.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (data) {
+            // res.json(data);
+            res.render("profile", { users: data });
+        });
+    });
+
     // READ: This gets all the pickup request info for the user by id 
     app.get("/user/:id", function (req, res) {
         db.User.findOne({
@@ -109,8 +121,10 @@ module.exports = function (app) {
         }).then(function (data) {
             // check if the user password user has typed in login page matches password from database
             if (req.body.password === data.password){
-                res.json(data);
+                // res.json(data);
                 // let the user continue to the next page (need to add this step below this comment)
+                // window.location.replace(data);
+                res.json("/profile/" + data.id);
             }
             else {
                 // some kind of "wrong password" message
