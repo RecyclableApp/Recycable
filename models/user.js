@@ -1,3 +1,5 @@
+//This model is used to create a new table for all user pickup requests (name, address, phone, type of recyclable, time, etc...)
+
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
         name: {
