@@ -2,29 +2,34 @@ var db = require("./../models");
 
 module.exports = function(app) {
     
+// READ
+app.get("/", function(req, res){
+        res.render("index");
+});
+
     // READ
-    app.get("/", function(req, res){
-        db.Student.findAll({}).then(function(data){
+    app.get("/addUser", function(req, res){
+        db.User.findAll({}).then(function(data){
             // res.json(data);
-            res.render("index", {students: data});
+            res.render("addUser", {users: data});
         });
     });
 
     // READ
-    app.get("/student/:id", function(req, res){
-        db.Student.findOne({
+    app.get("/user/:id", function(req, res){
+        db.User.findOne({
             where: {
                 id: req.params.id
             }
         }).then(function(data){
             console.log(data.name);
-            res.render("student", {student: data});
+            res.render("user", {user: data});
         });
     });
     
     // CREATE 
-    app.post("/api/students", function(req, res){
-        db.Student.create({
+    app.post("/api/users", function(req, res){
+        db.User.create({
             name: req.body.name,
             phone: req.body.phone,
             address: req.body.address,
@@ -38,8 +43,8 @@ module.exports = function(app) {
     });
     
     // UPDATE
-    app.put("/api/student/:id", function(req, res){
-        db.Student.update({
+    app.put("/api/user/:id", function(req, res){
+        db.User.update({
             name: req.body.name,
             phone: req.body.phone,
             address: req.body.address,
@@ -57,8 +62,8 @@ module.exports = function(app) {
     });
 
     // DELETE
-    app.delete("/api/student/:id", function(req, res){
-        db.Student.destroy({
+    app.delete("/api/user/:id", function(req, res){
+        db.User.destroy({
             where: {
                 id: req.params.id
             }
