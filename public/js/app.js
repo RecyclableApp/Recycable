@@ -27,14 +27,19 @@ $(document).ready(function () {
     $("#login-button").on("submit", function (e) {
         e.preventDefault();
         var userData = {
-            email: $("#email").val().trim(),
-            password: $("#password").val().trim()
+            email: $("#loginEmail").val().trim(),
+            password: $("#loginPassword").val().trim()
         };
         console.log(userData);
         // send a POST request to the server
-        $.post("/api/login", userData, function (data) {
-            location.reload();
+        $.post("/api/login", userData
+        ).then(function(data){
+            window.location.replace(data);
         });
+        // , function (data) {
+        //     location.reload();
+            // window.location.replace(data);
+        // });
     });
 
     // This is the old pickup request form
