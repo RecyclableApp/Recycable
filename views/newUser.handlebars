@@ -1,9 +1,13 @@
-{{!-- This is the BRAND NEW "sign up" page I just created --}}
-{{!-- We store their email and password in the database and check they match later when user logs in, 
-only if match do we give them permission to see personal info --}}
+{{!-- This is the BRAND NEW "sign up" page I just created --}} {{!-- We store their email and password in the database and
+check they match later when user logs in, only if match do we give them permission to see personal info --}}
 
 <div class="container">
 
+    <a class="btn btn-default homepage" href="/">Homepage</a>
+
+    <h3>
+        <strong>User Sign Up</strong>
+    </h3>
 
     <form id="new-user">
         <div class="form-group">
@@ -22,7 +26,7 @@ only if match do we give them permission to see personal info --}}
             <label for="password">Password:</label>
             <input type="password" class="form-control" id="password">
         </div>
-        
+
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
 
