@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
 
     // (THIS IS NEW, I JUST ADDED IT)
@@ -32,38 +33,26 @@ $(document).ready(function () {
             password: $("#loginPassword").val().trim()
         };
         console.log(userData);
+
         // send a POST request to the server
         $.post("/api/login", userData
-        ).then(function(data){
+        ).done(function (data) {
             window.location.replace(data);
+        
+        }).fail(function (response) {
+            // console.error (response)
+            alert(response.responseText);
         });
+
+
+
         // , function (data) {
         //     location.reload();
-            // window.location.replace(data);
+        // window.location.replace(data);
         // });
-    });
 
-    // This is the old pickup request form
-    // I suggest we RENAME this LATER once everything is up and running, suggested name: /api/pickupRequest 
-    // when the form is submitted we save all information for this pickup (name, address, type recyclable, etc...)
-    $("#add-user").on("submit", function (e) {
-        e.preventDefault();
-        var userData = {
-            name: $("#name").val().trim(),
-            phone: $("#phone").val().trim(),
-            address: $("#address").val().trim(),
-            // type: $("#type").val(),
-            type: $('input[name=type]:checked').val(),
-            quantity_in_lbs: $("#quantity_in_lbs").val().trim(),
-            pickupStart: $("#pickupStart").val().trim(),
-            pickupEnd: $("#pickupEnd").val().trim(),
-        };
-        console.log(userData);
-        // send a POST request to the server
-        $.post("/api/users", userData, function (data) {
-            location.reload();
-        });
-    });
+});
+
 
     // This is the old delete button, no changes so far
     // Maybe LATER once everythign is up and running we rename the button itself to "Pickup complete" or something along those lines
@@ -79,7 +68,10 @@ $(document).ready(function () {
         }).then(function (data) {
             location.reload();
         });
+
     });
+});
+
 
     // This is the old update button, no changes so far
     // This allows users to edit their pickup requests
@@ -113,6 +105,8 @@ $(document).ready(function () {
             window.location.assign("/profile/" + userId);
         });
     });
+});
+
 
     // This is for the pickup request form in the profile
     $("#profile-pickup-request").on("submit", function (e) {
@@ -140,3 +134,6 @@ $(document).ready(function () {
     });
 
 });
+
+
+

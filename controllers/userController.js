@@ -125,7 +125,10 @@ module.exports = function (app) {
             }
         }).then(function (data) {
             // check if the user password user has typed in login page matches password from database
-            if (req.body.password === data.password) {
+          
+            if (req.body.password === data.password){
+
+
                 // res.json(data);
                 // let the user continue to the next page (need to add this step below this comment)
                 // window.location.replace(data);
@@ -134,6 +137,8 @@ module.exports = function (app) {
             else {
                 // some kind of "wrong password" message
                 res.status(400).send("Wrong Password");
+                // console.log(data);
+                
             }
 
         });
