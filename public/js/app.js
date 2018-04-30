@@ -34,9 +34,17 @@ $(document).ready(function () {
         console.log(userData);
         // send a POST request to the server
         $.post("/api/login", userData
-        ).then(function(data){
+        ).done(function (data) {
             window.location.replace(data);
-        });
+        }).fail(function (response){
+            // console.error (response);
+            alert(response.responseText);
+        })
+
+
+        // ).then(function(data){
+        //     window.location.replace(data);
+        // });
         // , function (data) {
         //     location.reload();
             // window.location.replace(data);
