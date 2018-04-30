@@ -26,14 +26,15 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
+    // Removed this relationship because we are going to have the pickup request form in the profile instead, see profilePickupRequests.js
     // I added the relationship between the pickup requests table and the newUser table, but I think we need to delete name and address from above model
-    User.associate = function(models) {
-        User.belongsTo(models.newUser, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // User.associate = function(models) {
+    //     User.belongsTo(models.newUser, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
 
     return User;
 };
