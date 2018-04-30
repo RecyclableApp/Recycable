@@ -20,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     newUser.associate = function(models) {
-        newUser.hasMany(models.User, {
+        newUser.hasMany(models.ProfilePickupRequest, {
             onDelete:"cascade"
         });
     }

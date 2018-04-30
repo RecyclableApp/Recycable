@@ -33,22 +33,38 @@ module.exports = function (app) {
                 id: req.params.id
             }
         }).then(function (data) {
-            // res.json(data);
-            res.render("profile", { users: data });
-        });
-    });
 
-    // READ: This gets all the pickup request info for the user by id 
-    app.get("/user/:id", function (req, res) {
-        db.User.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(function (data) {
-            console.log(data.name);
-            res.render("user", { user: data });
+            db.ProfilePickupRequest.findAll({
+                where: {
+                    newUserId: data.id
+                }
+            }).then(function (findRequests) {
+                // res.json(data);
+                res.render("profile", { users: data, requests: findRequests });
+            })
+
         });
     });
+    // app.get("/profile/:id", function (req, res) {
+    //     db.ProfilePickupRequest.findOne({
+    //         where: {
+    //             newUserId: req.params.id
+    //         }
+    //     }).then(function (data) {
+
+    //         db.newUser.findAll({
+    //             where: {
+    //                 id: data.newUserId
+    //             }
+    //         }).then(function(findRequests){
+    //             // res.json(data);
+    //             res.render("profile", { users: data, requests: findRequests});
+    //         })
+
+    //     });
+    // });
+
+
 
     // CREATE: This saves the information from the "create new account" page above for brand new users (THIS IS NEW, I JUST ADDED IT!)
     app.post("/api/newUser", function (req, res) {
@@ -78,37 +94,25 @@ module.exports = function (app) {
         });
     });
 
-    // UPDATE: This allows users to edit their pickup request
-    // Problem right now: radios aren't showing up with new formatting
-    app.put("/api/user/:id", function (req, res) {
-        db.User.update({
-            name: req.body.name,
+    // This is for the pickup request form in the profile
+    app.post("/api/profilePickupRequest", function (req, res) {
+    
+        db.ProfilePickupRequest.create({
+            // name: req.body.name,
             phone: req.body.phone,
-            address: req.body.address,
+            // address: req.body.address,
             type: req.body.type,
             quantity_in_lbs: req.body.quantity_in_lbs,
             pickupStart: req.body.pickupStart,
-            pickupEnd: req.body.pickupEnd
-        }, {
-                where: {
-                    id: req.params.id
-                }
-            }).then(function (data) {
-                res.json(data);
-            });
-    });
-
-    // DELETE: This allows the user to delete their request to confirm our drivers have been by to pick up their recyclables
-    // Sugget renaming the button to: "Pickup complete" or something along those lines
-    app.delete("/api/user/:id", function (req, res) {
-        db.User.destroy({
-            where: {
-                id: req.params.id
-            }
+            pickupEnd: req.body.pickupEnd,
+            newUserId: req.body.newUserId
         }).then(function (data) {
             res.json(data);
         });
     });
+
+
+
 
     // VERIFY: This checks to  make sure user login email matches user password (THIS IS NEW, I JUST ADDED IT!)
     // Travis said we use post when checking passwords instead of get bc of sensitive info
@@ -120,7 +124,9 @@ module.exports = function (app) {
             }
         }).then(function (data) {
             // check if the user password user has typed in login page matches password from database
+          
             if (req.body.password === data.password){
+
 
                 // res.json(data);
                 // let the user continue to the next page (need to add this step below this comment)
