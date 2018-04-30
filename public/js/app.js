@@ -1,5 +1,5 @@
 
-// $(document).ready(function () {
+$(document).ready(function () {
 
     // (THIS IS NEW, I JUST ADDED IT)
     // When user clicks submit on the "sign up" page
@@ -33,13 +33,23 @@
         };
         console.log(userData);
 
-  
-    //         window.location.replace(data);
-    //     });
-    // , function (data) {
-    //     location.reload();
-    // window.location.replace(data);
-    // });
+        // send a POST request to the server
+        $.post("/api/login", userData
+        ).done(function (data) {
+            window.location.replace(data);
+        
+        }).fail(function (response) {
+            // console.error (response)
+            alert(response.responseText);
+        });
+
+
+
+        // , function (data) {
+        //     location.reload();
+        // window.location.replace(data);
+        // });
+
 });
 
 // This is the old pickup request form
@@ -103,6 +113,7 @@ $("#update-user").on("submit", function (e) {
     });
 });
 
+});
 
 
 

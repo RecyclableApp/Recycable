@@ -129,9 +129,9 @@ module.exports = function (app) {
             }
             else {
                 // some kind of "wrong password" message
-                //res.status(400).send("Wrong Password");
-                alert("Wrong Password.");
-
+                res.status(400).send("Wrong Password");
+                // console.log(data);
+                
             }
 
         });
