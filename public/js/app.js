@@ -39,7 +39,7 @@ $(document).ready(function () {
         }).fail(function (response){
             // console.error (response);
             alert(response.responseText);
-        })
+        });
 
 
         // ).then(function(data){
