@@ -53,11 +53,13 @@
 </h3>
 {{!-- I commented out name and address bc we want to pull these
 from the newUsers table so they are EXACTLY the same --}}
-    <form id="add-user">
+    <form id="profile-pickup-request">
         {{!-- <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" id="name">
         </div> --}}
+        <input type="hidden" class="form-control" id="user-id" value={{users.id}}>
+
         <div class="form-group">
             <label for="phone">Phone:</label>
             <input type="text" class="form-control" id="phone">
@@ -101,9 +103,9 @@ from the newUsers table so they are EXACTLY the same --}}
             <p>Please mark pickup as "complete" once our driver has fulfilled your request.</p>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                {{!-- <th>Name</th> --}}
                 <th>Phone</th>
-                <th>Address</th>
+                {{!-- <th>Address</th> --}}
                 <th>Type</th>
                 <th>Quantity (in lbs)</th>
                 <th>Pickup Start Time</th>
@@ -113,12 +115,12 @@ from the newUsers table so they are EXACTLY the same --}}
         <tbody>
             {{!-- change this so its an each loop for each of THIS USERS requests, not for all of our users requests --}}
             {{!-- I think we have to link our two tables before we can do this --}}
-            {{#each users}}
+            {{#each requests}}
             <tr>
                 <td>{{this.id}}</td>
-                <td>{{this.name}}</td>
+                {{!-- <td>{{this.name}}</td> --}}
                 <td>{{this.phone}}</td>
-                <td>{{this.address}}</td>
+                {{!-- <td>{{this.address}}</td> --}}
                 <td>{{this.type}}</td>
                 <td>{{this.quantity_in_lbs}}</td>
                 <td>{{this.pickupStart}}</td>
@@ -128,7 +130,7 @@ from the newUsers table so they are EXACTLY the same --}}
                     <button class="btn btn-danger delete-btn" data-id={{this.id}}>Delete</button>
                 </td>
                 <td>
-                    <a class="btn btn-default edit-btn" href="/user/{{this.id}}">Edit</a>
+                    <a class="btn btn-default edit-btn" href="/requestEdit/{{this.id}}">Edit</a>
                 </td>
             </tr>
             {{/each}}
