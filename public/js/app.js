@@ -68,10 +68,13 @@ $(document).ready(function () {
     // Maybe LATER once everythign is up and running we rename the button itself to "Pickup complete" or something along those lines
     $(".delete-btn").on("click", function (e) {
         e.preventDefault();
-        var userId = $(this).attr("data-id");
+        var requestId = $(this).attr("data-id");
+
+        console.log("requestId: " + requestId);
+
         $.ajax({
             method: "DELETE",
-            url: "/api/user/" + userId
+            url: "/api/requestEdit/" + requestId
         }).then(function (data) {
             location.reload();
         });
@@ -81,27 +84,58 @@ $(document).ready(function () {
     // This allows users to edit their pickup requests
     $("#update-user").on("submit", function (e) {
         e.preventDefault();
-        var userId = $(this).attr("data-id");
-        var userData = {
-            name: $("#name-update").val().trim(),
+        var userId = $(this).attr("data-user-id");
+        var requestId = $(this).attr("data-request-id");
+
+        var requestData = {
+            // name: $("#name-update").val().trim(),
             phone: $("#phone-update").val().trim(),
-            address: $("#address-update").val().trim(),
+            // address: $("#address-update").val().trim(),
             // type: $("#type-update").val(),
             type: $('input[name=type]:checked').val(),
             quantity_in_lbs: $("#quantity_in_lbs-update").val().trim(),
             pickupStart: $("#pickupStart-update").val().trim(),
             pickupEnd: $("#pickupEnd-update").val().trim()
         };
-        console.log(userData);
+        console.log(requestData);
         // send a PUT request to the server
         $.ajax({
             method: "PUT",
-            url: "/api/user/" + userId,
-            data: userData
+            url: "/api/requestEdit/" + requestId,
+            data: requestData
         }).then(function (data) {
-            window.location.assign("/addUser");
+            // window.location.assign("/addUser");
+
+            //THE USERID IS COMING OUT TO BE 2 INSTEAD OF 1 FOR HELEN
+            console.log("userId: " + requestId);
+
+            window.location.assign("/profile/" + userId);
         });
     });
 
+    // This is for the pickup request form in the profile
+    $("#profile-pickup-request").on("submit", function (e) {
+        e.preventDefault();
+        var userData = {
+
+            // FIGURE OUT HOW TO INCLUDE NAME AND ADDRESS FROM THIS USER
+
+            newUserId: parseInt($("#user-id").val().trim()),
+            phone: $("#phone").val().trim(),
+            // address: $("#address").val().trim(),
+            // type: $("#type").val(),
+            type: $('input[name=type]:checked').val(),
+            quantity_in_lbs: $("#quantity_in_lbs").val().trim(),
+            pickupStart: $("#pickupStart").val().trim(),
+            pickupEnd: $("#pickupEnd").val().trim(),
+
+        };
+        console.log(userData);
+
+        // send a POST request to the server
+        $.post("/api/profilePickupRequest", userData, function (data) {
+            location.reload();
+        });
+    });
 
 });
