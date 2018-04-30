@@ -1,5 +1,50 @@
 $(document).ready(function () {
-    // when the form is submitted
+
+    // (THIS IS NEW, I JUST ADDED IT)
+    // When user clicks submit on the "sign up" page
+    // We trigger a post on api/newUser
+    // This creates a brand new user, we use their email and password for permissions later 
+    $("#new-user").on("submit", function (e) {
+        e.preventDefault();
+        var userData = {
+            name: $("#name").val().trim(),
+            email: $("#email").val().trim(),
+            address: $("#address").val().trim(),
+            password: $("#password").val().trim()
+        };
+        console.log(userData);
+        // send a POST request to the server
+        $.post("/api/newUser", userData, function (data) {
+            location.reload();
+        });
+    });
+
+    // (THIS IS NEW, I JUST ADDED IT)
+    // When user clicks submit on the "log in" page
+    // We trigger a post on api/login
+    // which verifies the email and password the user typed in match what is in our database
+    // we only give them permission to see their personal info if correct
+    $("#login-button").on("submit", function (e) {
+        e.preventDefault();
+        var userData = {
+            email: $("#loginEmail").val().trim(),
+            password: $("#loginPassword").val().trim()
+        };
+        console.log(userData);
+        // send a POST request to the server
+        $.post("/api/login", userData
+        ).then(function(data){
+            window.location.replace(data);
+        });
+        // , function (data) {
+        //     location.reload();
+            // window.location.replace(data);
+        // });
+    });
+
+    // This is the old pickup request form
+    // I suggest we RENAME this LATER once everything is up and running, suggested name: /api/pickupRequest 
+    // when the form is submitted we save all information for this pickup (name, address, type recyclable, etc...)
     $("#add-user").on("submit", function (e) {
         e.preventDefault();
         var userData = {
@@ -19,18 +64,21 @@ $(document).ready(function () {
         });
     });
 
-    $(".delete-btn").on("click", function(e){
+    // This is the old delete button, no changes so far
+    // Maybe LATER once everythign is up and running we rename the button itself to "Pickup complete" or something along those lines
+    $(".delete-btn").on("click", function (e) {
         e.preventDefault();
         var userId = $(this).attr("data-id");
         $.ajax({
-            method: "DELETE", 
+            method: "DELETE",
             url: "/api/user/" + userId
-        }).then(function(data){
+        }).then(function (data) {
             location.reload();
         });
     });
 
-    // TODO: Implement an update feature
+    // This is the old update button, no changes so far
+    // This allows users to edit their pickup requests
     $("#update-user").on("submit", function (e) {
         e.preventDefault();
         var userId = $(this).attr("data-id");
@@ -47,13 +95,13 @@ $(document).ready(function () {
         console.log(userData);
         // send a PUT request to the server
         $.ajax({
-            method: "PUT", 
+            method: "PUT",
             url: "/api/user/" + userId,
             data: userData
-        }).then(function(data){
+        }).then(function (data) {
             window.location.assign("/addUser");
         });
     });
-    
+
 
 });
