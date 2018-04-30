@@ -74,7 +74,8 @@ module.exports = function (app) {
             address: req.body.address,
             password: req.body.password
         }).then(function (data) {
-            res.json(data);
+            // res.json(data);
+            res.json("/login");
         });
     });
 
