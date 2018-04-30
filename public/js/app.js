@@ -15,7 +15,8 @@ $(document).ready(function () {
         console.log(userData);
         // send a POST request to the server
         $.post("/api/newUser", userData, function (data) {
-            location.reload();
+            // location.reload();
+            window.location.replace(data);
         });
     });
 
