@@ -1,6 +1,7 @@
 {
   "development": {
     "use_env_variable": "LOCAL_DATABASE_URL",
+
     "dialect": "mysql"
   },
   "test": {
