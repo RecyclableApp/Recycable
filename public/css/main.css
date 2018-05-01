@@ -2566,6 +2566,10 @@
 
 /* Button */
 
+	#first-button {
+
+	}
+
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
@@ -2800,7 +2804,7 @@
 			}
 
 	#header {
-		padding: 9em 0 9em 0 ;
+		padding: 5em 0 5em 0 ;
 		background-color: #4686a0;
 		color: rgba(255, 255, 255, 0.75);
 		background-attachment: fixed,							fixed,							fixed;
@@ -3115,7 +3119,7 @@
 		/* Header */
 
 			#header {
-				padding: 6em 0 6em 0 ;
+				padding: 4em 0 4em 0 ;
 			}
 
 	}
