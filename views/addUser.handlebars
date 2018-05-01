@@ -1,14 +1,17 @@
-{{!-- Although this file is called "addUser.handlebars" it doesn't add a new user, it adds a new pickup request
-Example: name, address, phone, type of recyclable, quantity, pickup window --}}
-{{!-- I suggest LATER after everythign is up and running we RENAME this file and form id to pickupRequest --}}
+{{!-- Although this file is called "addUser.handlebars" it doesn't add a new user, it adds a new pickup request Example:
+name, address, phone, type of recyclable, quantity, pickup window --}} {{!-- I suggest LATER after everythign is up and running
+we RENAME this file and form id to pickupRequest --}}
 
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-sm-8 col-md-8">
-           
+
             {{!-- This is the pickup request form --}}
             <form id="add-user">
                 <div class="form-group">
+                    <h1>
+                        <strong>User Input Page</strong>
+                    </h1>
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name">
                 </div>
@@ -21,109 +24,130 @@ Example: name, address, phone, type of recyclable, quantity, pickup window --}}
                     <input type="text" class="form-control" id="address">
                 </div>
                 <div class="form-group">
-                    <label for="type">Type:</label>
-                    {{!-- This is the old code --}}
-                    {{!-- <input type="text" class="form-control" id="type"> --}}
-
-                    {{!-- This is the dropdown I tried --}}
-                    {{!-- <select type="text" class="form-control" id="type">
+                    <label for="type">I want to recycle:</label>
+                    {{!-- This is the old code --}} {{!--
+                    <input type="text" class="form-control" id="type"> --}} {{!-- This is the dropdown I tried --}} {{!--
+                    <select type="text" class="form-control" id="type">
                         <option value="aluminum">Aluminum</option>
                         <option value="paper">Paper</option>
                         <option value="glass">Glass</option>
                         <option value="cardboard">Cardboard</option>
-                    </select> --}}
-
-                    {{!-- Now trying radio buttons --}}
-                    {{!-- IT WORKED!  WOOOHOOO!  THANKS TRAVIS! --}}
+                    </select> --}} {{!-- Now trying radio buttons --}} {{!-- IT WORKED! WOOOHOOO! THANKS TRAVIS! --}}
+                    <input type="radio" name="type" value="aluminum" class="type"> Aluminum
                     <br>
-                        <input type="radio" name="type" value="aluminum"  class="type"> Aluminum 
-                        <br>
-                        <input type="radio" name="type" value="glass"  class="type"> Glass 
-                        <br>
-                        <input type="radio" name="type" value="paper"  class="type"> Paper 
-                        <br>
-                        <input type="radio" name="type" value="cardboard"  class="type"> Cardboard 
-                        <br>
+                    <input type="radio" name="type" value="glass" class="type"> Glass
+                    <br>
+                    <input type="radio" name="type" value="paper" class="type"> Paper
+                    <br>
+                    <input type="radio" name="type" value="Plastic" class="type"> Plastic
+                    <br>
+                    <input type="radio" name="type" value="cardboard" class="type"> Cardboard
+                    <br>
                 </div>
 
+                <br> {{!--
                 <div class="form-group">
                     <label for="quantity_in_lbs">Quantity (in lbs):</label>
-                    <input type="text" class="form-control" id="quantity_in_lbs">
-                </div>
+                    <input type="text" class="form-control" id="quantity_in_lbs"> --}}
 
-                <div class="form-group">
-                    <label for="pickupStart">Pickup Start Time:</label>
-                    <input type="text" class="form-control" id="pickupStart">
-                </div>
-                <div class="form-group">
-                    <label for="pickupEnd">Pickup End Time:</label>
-                    <input type="text" class="form-control" id="pickupEnd">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                            Quantity (in lbs):
+                            <span class="caret"></span>
+                        </button>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-=======
-        {{!-- This table shows all pickup requests from ALL USERS --}}
-        {{!-- I commented out name, phone, and address since we don't want ALL USERS to see this --}}
-            <table class="table">
-                <thead> 
-                    <h1>Pending Pickup Requests by All Up Community Members:</h1>
-                    <h3>Please visit your profile page to mark your request complete once your driver has completed the pickup.</h3>
-                    <tr>
-                        <th>Id</th>
-                        {{!-- <th>Name</th>
-                        <th>Phone</th>
-                        <th>Address</th> --}}
->>>>>>> 8769294bbcadb5ce8e37dc6ee2f262928e4de6db
-                        <th>Type</th>
-                        <th>Quantity (in lbs)</th>
-                        <th>Pickup Start Time</th>
-                        <th>Pickup End Time</th>
-<<<<<<< HEAD
-=======
-                        {{!-- <th>Points for this request</th> --}}
->>>>>>> 8769294bbcadb5ce8e37dc6ee2f262928e4de6db
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each users}}
-                    <tr>
-                        <td>{{this.id}}</td>
-<<<<<<< HEAD
-                        <td>{{this.name}}</td>
-                        <td>{{this.phone}}</td>
-                        <td>{{this.address}}</td>
-=======
-                        {{!-- <td>{{this.name}}</td>
-                        <td>{{this.phone}}</td>
-                        <td>{{this.address}}</td> --}}
->>>>>>> 8769294bbcadb5ce8e37dc6ee2f262928e4de6db
-                        <td>{{this.type}}</td>
-                        <td>{{this.quantity_in_lbs}}</td>
-                        <td>{{this.pickupStart}}</td>
-                        <td>{{this.pickupEnd}}</td>
-<<<<<<< HEAD
-=======
-                        {{!-- <td>{{this.quantity_in_lbs*4}}</td> --}}
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>
+                                <a href="#">1 - 5</a>
+                            </li>
+                            <li>
+                                <a href="#">5 - 10</a>
+                            </li>
+                            <li>
+                                <a href="#">10 - 20</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">20+</a>
+                            </li>
+                        </ul>
+                    </div>
 
-                        {{!-- Remove these buttons from this page and put them in the user profile instead so only the correct user can delete and change their requests --}}
->>>>>>> 8769294bbcadb5ce8e37dc6ee2f262928e4de6db
-                        <td>
-                            <button class="btn btn-danger delete-btn" data-id={{this.id}}>Delete</button>
-                        </td>
-                        <td>
-                            <a class="btn btn-default edit-btn" href="/user/{{this.id}}">Edit</a>
-                        </td>
-<<<<<<< HEAD
+                    <br>
+
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="true">
+                            Pick-Up Time:
+                            <span class="caret"></span>
+                        </button>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li>
+                                <a href="#">8am-Noon</a>
+                            </li>
+                            <li>
+                                <a href="#">Noon - 3pm</a>
+                            </li>
+                            <li>
+                                <a href="#">3pm - 6pm</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+
+                    <h1>
+                        <strong>UP! Points and Rewards per Pound:</strong>
+                    </h1>
+
+
+                    <table style="width:100%">
+                        <style>
+                            table,
+                            th,
+                            td {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                            }
+
+                            th,
+                            td {
+                                padding: 5px;
+                                text-align: left;
+                            }
+                        </style>
+
+                        <tr>
+                            <th>Materials</th>
+                            <th>Aluminum</th>
+                            <th>Glass</th>
+                            <th>Paper</th>
+                            <th>Plastic</th>
+                            <th>Cardboard</th>
+                        </tr>
+                        <tr>
+                            <th>Points</th>
+                            <th>5 pts</th>
+                            <th>3 pts</th>
+                            <th>1 pt</th>
+                            <th>2 pts</th>
+                            <th>2 pts</th>
+                        </tr>
+                        <tr>
+                            <th>Rewards</th>
+                            <th>$$$</th>
+                            <th>$$$</th>
+                            <th>$$$</th>
+                            <th>$$$</th>
+                            <th>$$$</th>
+                        </tr>
+                    </table>
+                    <p><strong> * Those who use our P2P platform for their deliveries will share 15% of their profits and 50% of their points with the driver.</strong></p>
+
 
 =======
 {{!-- This is the pickup request form --}}
@@ -179,7 +203,7 @@ Example: name, address, phone, type of recyclable, quantity, pickup window --}}
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
-
+{{!-- 
 {{!-- This table shows all pickup requests from ALL USERS --}}
 {{!-- I commented out name, phone, and address since we don't want ALL USERS to see this --}}
     <table class="table">
@@ -222,15 +246,8 @@ Example: name, address, phone, type of recyclable, quantity, pickup window --}}
             {{/each}}
         </tbody>
     </table>
->>>>>>> a6166830928a7a9eedb6c46fd25be7e9755b0cbd
 
-=======
->>>>>>> 8769294bbcadb5ce8e37dc6ee2f262928e4de6db
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
 
-        </div>
+        </div> --}}
     </div>
 </div>
