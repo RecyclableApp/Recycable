@@ -21,6 +21,13 @@ module.exports = function (app) {
         res.render("newUser");
     });
 
+    // READ:  This renders the public page
+    app.get("/public", function (req, res) {
+        db.ProfilePickupRequest.findAll({}).then(function(data){
+            res.render("public", {allRequests: data});
+        })
+    });
+
     // READ: This renders a login page that later checks to make sure their email matches the password and later gives them permission to see only their own private information like address and phone number (THIS IS NEW, I JUST ADDED IT!)
     app.get("/login", function (req, res) {
         res.render("login");
