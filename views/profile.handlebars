@@ -1,23 +1,16 @@
-{{!-- This is a new page I just created --}}
-
-{{!-- To Do:
-        *Show user their personal info: name, email, address 
-        *LATER show user their accumulated points
-        *Let user post new pickup reqest from here too
-        *Show user all of THEIR pickup requests only (with personal info)
-        *User must go to another page to see all requests made by all Up Community Members
---}}
+{{!-- This is a new page I just created --}} {{!-- To Do: *Show user their personal info: name, email, address *LATER show
+user their accumulated points *Let user post new pickup reqest from here too *Show user all of THEIR pickup requests only
+(with personal info) *User must go to another page to see all requests made by all Up Community Members --}}
 
 <div class="container">
 
     <a class="btn btn-default  homepage" href="/">Homepage</a>
+    <a class="btn btn-default  homepage" href="/public">Community Activity</a>
 
-{{!-- This table shows the user their personal info --}}
-        <table class="table">
-        <thead> 
-            <h1>Hello {{users.name}}
-                {{!-- look up how to use handlebars to insert the users name --}}
-                !
+    {{!-- This table shows the user their personal info --}}
+    <table class="table">
+        <thead>
+            <h1>Hello {{users.name}} {{!-- look up how to use handlebars to insert the users name --}} !
             </h1>
             <h3>
                 Here is your personal information:
@@ -29,15 +22,14 @@
             </tr>
         </thead>
         <tbody>
-            {{!-- Change this so its no longer an each loop, its just for one user --}}
-            {{!-- {{#each users}} --}}
+            {{!-- Change this so its no longer an each loop, its just for one user --}} {{!-- {{#each users}} --}}
             <tr>
                 <td>{{users.name}}</td>
                 <td>{{users.email}}</td>
                 <td>{{users.address}}</td>
-            
-            {{!-- If we want to bring back the edit and delete buttons we have to set them up to work --}}
-                {{!-- <td>
+
+                {{!-- If we want to bring back the edit and delete buttons we have to set them up to work --}} {{!--
+                <td>
                     <button class="btn btn-danger delete-btn" data-id={{this.id}}>Delete</button>
                 </td>
                 <td>
@@ -48,15 +40,15 @@
         </tbody>
     </table>
 
-<br><br>
-{{!-- This is the pickup request form --}}
-<h3>
-    Use  this form to submit a new pickup request:
-</h3>
-{{!-- I commented out name and address bc we want to pull these
-from the newUsers table so they are EXACTLY the same --}}
+    <br>
+    <br> {{!-- This is the pickup request form --}}
+    <h3>
+        Use this form to submit a new pickup request:
+    </h3>
+    {{!-- I commented out name and address bc we want to pull these from the newUsers table so they are EXACTLY the same --}}
     <form id="profile-pickup-request">
-        {{!-- <div class="form-group">
+        {{!--
+        <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" id="name">
         </div> --}}
@@ -66,21 +58,22 @@ from the newUsers table so they are EXACTLY the same --}}
             <label for="phone">Phone:</label>
             <input type="text" class="form-control" id="phone">
         </div>
-        {{!-- <div class="form-group">
+        {{!--
+        <div class="form-group">
             <label for="address">Address:</label>
             <input type="text" class="form-control" id="address">
         </div> --}}
         <div class="form-group">
             <label for="type">Type:</label>
             <br>
-                <input type="radio" name="type" value="aluminum"  class="type"> Aluminum 
-                <br>
-                <input type="radio" name="type" value="glass"  class="type"> Glass 
-                <br>
-                <input type="radio" name="type" value="paper"  class="type"> Paper 
-                <br>
-                <input type="radio" name="type" value="cardboard"  class="type"> Cardboard 
-                <br>
+            <input type="radio" name="type" value="aluminum" class="type"> Aluminum
+            <br>
+            <input type="radio" name="type" value="glass" class="type"> Glass
+            <br>
+            <input type="radio" name="type" value="paper" class="type"> Paper
+            <br>
+            <input type="radio" name="type" value="cardboard" class="type"> Cardboard
+            <br>
         </div>
         <div class="form-group">
             <label for="quantity_in_lbs">Quantity (in lbs):</label>
@@ -97,17 +90,19 @@ from the newUsers table so they are EXACTLY the same --}}
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
 
-<br><br>
-{{!-- This table shows all pickup requests from THIS USER ONLY --}}
+    <br>
+    <br> {{!-- This table shows all pickup requests from THIS USER ONLY --}}
     <table class="table">
-        <thead> 
+        <thead>
             <h3>Your pending pickup requests:</h3>
             <p>Please mark pickup as "complete" once our driver has fulfilled your request.</p>
             <tr>
                 <th>Id</th>
-                {{!-- <th>Name</th> --}}
+                {{!--
+                <th>Name</th> --}}
                 <th>Phone</th>
-                {{!-- <th>Address</th> --}}
+                {{!--
+                <th>Address</th> --}}
                 <th>Type</th>
                 <th>Quantity (in lbs)</th>
                 <th>Pickup Start Time</th>
@@ -115,14 +110,15 @@ from the newUsers table so they are EXACTLY the same --}}
             </tr>
         </thead>
         <tbody>
-            {{!-- change this so its an each loop for each of THIS USERS requests, not for all of our users requests --}}
-            {{!-- I think we have to link our two tables before we can do this --}}
-            {{#each requests}}
+            {{!-- change this so its an each loop for each of THIS USERS requests, not for all of our users requests --}} {{!-- I think
+            we have to link our two tables before we can do this --}} {{#each requests}}
             <tr>
                 <td>{{this.id}}</td>
-                {{!-- <td>{{this.name}}</td> --}}
+                {{!--
+                <td>{{this.name}}</td> --}}
                 <td>{{this.phone}}</td>
-                {{!-- <td>{{this.address}}</td> --}}
+                {{!--
+                <td>{{this.address}}</td> --}}
                 <td>{{this.type}}</td>
                 <td>{{this.quantity_in_lbs}}</td>
                 <td>{{this.pickupStart}}</td>
@@ -139,6 +135,8 @@ from the newUsers table so they are EXACTLY the same --}}
         </tbody>
     </table>
 
-<br><br><br>
+    <br>
+    <br>
+    <br>
 
 </div>
