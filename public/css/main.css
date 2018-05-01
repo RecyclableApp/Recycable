@@ -3422,3 +3422,8 @@
 			}
 
 	}
+
+	/*Alicia added this for homepage buttons on signup, login, and profile pages  */
+.homepage{
+	float:right;
+}
